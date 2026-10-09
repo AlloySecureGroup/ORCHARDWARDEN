@@ -1,0 +1,16 @@
+kit: darksword
+aliases: []
+reporting: [Google Threat Intelligence Group, Lookout, iVerify]
+delivery: [web_watering_hole]
+user_interaction: visit_only
+persistence: hit_and_run
+payload_family: [GHOSTBLADE]
+cves: [CVE-2025-31277, CVE-2025-14174]
+affected_ios:
+  - {min: "18.4", max: "18.7"}
+lockdown_mode_effective: true
+artifact_checks: [safari_history_ioc, dns_ioc]
+caveat: "Reported as patched in iOS 26.3. Hit and run data theft leaves little on disk."
+needs_primary_source_review: true
+sources:
+  - https://securityaffairs.com/?p=189662

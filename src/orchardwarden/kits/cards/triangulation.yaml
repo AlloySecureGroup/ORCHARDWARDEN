@@ -1,0 +1,16 @@
+kit: triangulation
+aliases: [Operation Triangulation, TriangleDB]
+reporting: [Kaspersky, Group-IB]
+delivery: [imessage_attachment_zero_click]
+user_interaction: none
+persistence: not_survive_reboot_reported
+cves: [CVE-2023-41990, CVE-2023-32434, CVE-2023-32435, CVE-2023-38606]
+affected_ios:
+  - {min: "13.0", max: "16.2"}
+fixed_in_note: "Verify exact fixed builds per CVE against Apple security notes"
+file_structure_checks: [ttf_undocumented_adjust_opcode]
+artifact_checks: [datausage_process_BackupAgent]
+caveat: "Process name BackupAgent (not BackupAgent2) is reported by Kaspersky as an indicator. Inability to install iOS updates is a weaker indicator."
+needs_primary_source_review: true
+sources:
+  - https://securelist.com/operation-triangulation/

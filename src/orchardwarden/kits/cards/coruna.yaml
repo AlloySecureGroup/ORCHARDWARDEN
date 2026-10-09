@@ -1,0 +1,17 @@
+kit: coruna
+aliases: [CryptoWaters]
+reporting: [Google Threat Intelligence Group, iVerify, Kaspersky]
+delivery: [web_hidden_iframe, watering_hole, scam_sites]
+user_interaction: visit_only
+persistence: low_or_none_observed
+payload_family: [PlasmaLoader, PLASMAGRID]
+cves: [CVE-2024-23222, CVE-2022-48503, CVE-2023-43000]
+affected_ios:
+  - {min: "13.0", max: "17.2.1"}
+lockdown_mode_effective: true
+private_browsing_effective: true
+artifact_checks: [safari_history_ioc, dns_ioc, webkit_ioc]
+caveat: "Web delivered. A normal backup rarely contains the exploit content. Detection relies on IOC domains in history or DNS and on version exposure."
+needs_primary_source_review: true
+sources:
+  - https://thehackernews.com/2026/03/coruna-ios-exploit-kit-uses-23-exploits.html

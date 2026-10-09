@@ -1,0 +1,31 @@
+rules:
+  - rule: message_crash_netburst
+    title: Message handling crash followed by new outbound connection
+    severity: HIGH
+    confidence: low
+    explain: >-
+      A message with an attachment was processed, a message handling service crashed shortly
+      after, and a process then contacted a destination not seen before.
+    sequence:
+      - type: message
+        attrs: {direction: inbound, sender_known: false, has_attachment: true}
+      - type: crash
+        within: 30
+        attrs: {process_in: [IMTranscoderAgent, imagent, MessagesBlastDoorService, com.apple.messages.BlastDoorService]}
+      - type: net_flow
+        within: 120
+        attrs: {first_seen_dest: true}
+
+  - rule: repeated_parser_crashes
+    title: Repeated crashes of a message parsing service
+    severity: MEDIUM
+    confidence: low
+    explain: >-
+      The same message handling service crashed twice within a minute. Exploit attempts
+      often crash the parser before succeeding.
+    sequence:
+      - type: crash
+        attrs: {process_in: [IMTranscoderAgent, imagent, MessagesBlastDoorService, com.apple.messages.BlastDoorService]}
+      - type: crash
+        within: 60
+        attrs: {process_in: [IMTranscoderAgent, imagent, MessagesBlastDoorService, com.apple.messages.BlastDoorService]}

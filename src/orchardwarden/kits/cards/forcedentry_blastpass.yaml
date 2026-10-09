@@ -1,0 +1,14 @@
+kit: pegasus_file_exploits
+aliases: [FORCEDENTRY, BLASTPASS]
+reporting: [Citizen Lab, Amnesty Tech, Apple]
+delivery: [imessage_attachment_zero_click, passkit_attachment]
+user_interaction: none
+cves: [CVE-2021-30860, CVE-2023-41064, CVE-2023-4863]
+affected_ios:
+  - {min: "13.0", max: "14.7.1"}
+  - {min: "15.0", max: "16.6"}
+file_structure_checks: [pdf_disguised_as_image, pdf_jbig2_in_messaging, webp_vp8l_in_passkit]
+caveat: "Ranges are coarse and need verification against Apple security notes."
+needs_primary_source_review: true
+sources:
+  - https://citizenlab.ca/

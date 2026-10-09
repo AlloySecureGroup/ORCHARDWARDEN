@@ -1,0 +1,13 @@
+kit: imageio_dng_cve_2025_43300
+aliases: []
+reporting: [Apple]
+delivery: [image_file_attachment]
+user_interaction: unknown
+cves: [CVE-2025-43300]
+affected_ios:
+  - {min: "15.0", max: "18.6.1"}
+file_structure_checks: [dng_samples_per_pixel_vs_jpeg_components]
+caveat: "Heuristic only. Some legitimate raw files use multi component lossless JPEG, so a mismatch is an analyst review item, not proof."
+needs_primary_source_review: true
+sources:
+  - https://github.com/msuiche/elegant-bouncer

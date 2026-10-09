@@ -1,0 +1,14 @@
+# Prototype mappings from raw log text to normalized events. Regexes are examples and MUST be
+# validated against real device logs for each supported iOS version before being trusted.
+mappings:
+  - regex: "(?P<process>IMTranscoderAgent|imagent|MessagesBlastDoorService|com\\.apple\\.messages\\.BlastDoorService).*(crash|terminated|exited abnormally|signal 11|SIGSEGV)"
+    type: crash
+    layer: B
+  - regex: "MessagesBlastDoorService.*(received|processing).*attachment"
+    type: message
+    layer: B
+    attrs: {direction: inbound, has_attachment: true, sender_known: false}
+  - regex: "NEW_DEST (?P<obj>\\S+)"
+    type: net_flow
+    layer: C
+    attrs: {first_seen_dest: true}
